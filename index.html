@@ -1,646 +1,1088 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Vaishnavi N. Todur - PHP Laravel Developer | Backend Developer Portfolio showcasing projects, skills, and experience in web development">
-  <meta name="keywords" content="Vaishnavi Todur, PHP Developer, Laravel Developer, Backend Developer, Web Developer, Portfolio">
-  <meta name="author" content="Vaishnavi N. Todur">
-  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
-  <title>My Portfolio</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <meta
+            name="description"
+            content="Vaishnavi N. Todur - PHP Laravel Developer | Backend Developer Portfolio showcasing projects, skills, and experience in web development"
+        />
+        <meta
+            name="keywords"
+            content="Vaishnavi Todur, PHP Developer, Laravel Developer, Backend Developer, Web Developer, Portfolio"
+        />
+        <meta name="author" content="Vaishnavi N. Todur" />
+        <meta
+            name="theme-color"
+            content="#0a0a0a"
+            media="(prefers-color-scheme: dark)"
+        />
+        <meta
+            name="theme-color"
+            content="#fafafa"
+            media="(prefers-color-scheme: light)"
+        />
+        <title>My Portfolio</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+            rel="stylesheet"
+        />
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+        <!-- Lucide Icons -->
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Loading Screen -->
+        <div class="loader" id="loader">
+            <div class="loader-inner">
+                <div class="loader-name">My Portfolio</div>
+                <div class="loader-bar"></div>
+            </div>
+        </div>
 
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="loader-inner">
-      <div class="loader-name">My Portfolio</div>
-      <div class="loader-bar"></div>
-    </div>
+        <!-- Cursor Glow -->
+        <div class="cursor-glow" id="cursorGlow"></div>
+
+        <!-- Header -->
+        <header class="header" id="header">
+            <div class="container">
+                <nav class="nav">
+                    <!-- <a href="#hero" class="nav-logo"><span>V</span>aishnavi.</a> -->
+
+                    <div class="nav-links" id="navLinks">
+                        <a href="#hero" class="active">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#experience">Experience</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#education">Education</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 12px">
+                        <button
+                            class="theme-toggle"
+                            id="themeToggle"
+                            aria-label="Toggle Theme"
+                        >
+                            <span class="icon-sun"
+                                ><i
+                                    data-lucide="sun"
+                                    style="width: 20px; height: 20px"
+                                ></i
+                            ></span>
+                            <span class="icon-moon"
+                                ><i
+                                    data-lucide="moon"
+                                    style="width: 20px; height: 20px"
+                                ></i
+                            ></span>
+                        </button>
+                        <button
+                            class="nav-toggle"
+                            id="navToggle"
+                            aria-label="Toggle Menu"
+                        >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="hero">
+            <div class="hero-bg-grid"></div>
+            <div class="hero-glow"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <p class="hero-greeting">Hello, I'm</p>
+                        <h1 class="hero-name">
+                            Vaishnavi <span class="gold">N. Todur</span>
+                        </h1>
+                        <p class="hero-title">
+                            <span class="typing-text" id="typingText"
+                                >PHP Laravel Developer</span
+                            >
+                        </p>
+                        <p class="hero-description">
+                            Backend developer with experience in MVC
+                            Architecture, RESTful APIs, and SQL database
+                            management. Passionate about building clean,
+                            efficient, and scalable web applications with
+                            additional expertise in building responsive and
+                            user-friendly frontend interfaces.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#contact" class="btn btn-primary">
+                                <i
+                                    data-lucide="send"
+                                    style="width: 16px; height: 16px"
+                                ></i>
+                                Get In Touch
+                            </a>
+                            <a href="#projects" class="btn btn-outline">
+                                <i
+                                    data-lucide="folder-open"
+                                    style="width: 16px; height: 16px"
+                                ></i>
+                                View Projects
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="hero-stat-number" data-count="2">
+                                    0
+                                </div>
+                                <div class="hero-stat-label">Internships</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-number" data-count="2">
+                                    0
+                                </div>
+                                <div class="hero-stat-label">Projects</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-number" data-count="4">
+                                    0
+                                </div>
+                                <div class="hero-stat-label">
+                                    Certifications
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <div class="hero-image-container">
+                            <!-- Replace this src with your actual photo -->
+                            <img
+                                src="image/profile_img.jpeg"
+                                alt="Vaishnavi N. Todur"
+                                class="hero-image"
+                                id="profilePhoto"
+                            />
+                            <div class="hero-image-ring"></div>
+                            <div class="hero-image-ring-2"></div>
+                        </div>
+                        <div class="hero-socials">
+                            <a
+                                href="https://github.com/"
+                                target="_blank"
+                                aria-label="GitHub"
+                            >
+                                <i
+                                    data-lucide="github"
+                                    style="width: 20px; height: 20px"
+                                ></i>
+                            </a>
+                            <a
+                                href="https://linkedin.com/"
+                                target="_blank"
+                                aria-label="LinkedIn"
+                            >
+                                <i
+                                    data-lucide="linkedin"
+                                    style="width: 20px; height: 20px"
+                                ></i>
+                            </a>
+                            <a
+                                href="mailto:vaishnavintodur@gmail.com"
+                                aria-label="Email"
+                            >
+                                <i
+                                    data-lucide="mail"
+                                    style="width: 20px; height: 20px"
+                                ></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">About Me</p>
+                    <h2 class="section-title">Know Me Better</h2>
+                    <p class="section-subtitle">
+                        A passionate developer focused on crafting efficient
+                        backend solutions
+                    </p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-image-box reveal">
+                        <div class="about-image-main">
+                            <img
+                                src="assets/images/profile.png"
+                                alt="Vaishnavi N. Todur"
+                            />
+                        </div>
+                        <div class="about-image-accent"></div>
+                    </div>
+                    <div class="about-info reveal">
+                        <h3>
+                            I'm Vaishnavi, a <span>Full Stack Developer</span>
+                        </h3>
+                        <p>
+                            PHP Laravel developer with experience in backend
+                            development MVC Architecture, RESTful APIs, and SQL
+                            database management. Skilled in building static and
+                            responsive websites. Strong problem-solving skills
+                            with a focus on clean code and continuous learning.
+                        </p>
+                        <p>
+                            Currently working as a PHP Laravel Backend Intern
+                            and handling frontend static websites at 7 Crore
+                            Technologies, where I develop backend features,
+                            implement CRUD operations, and contribute to
+                            responsive website development.
+                        </p>
+                        <div class="about-details">
+                            <div class="about-detail">
+                                <span class="about-detail-icon"
+                                    ><i
+                                        data-lucide="user"
+                                        style="width: 18px; height: 18px"
+                                    ></i
+                                ></span>
+                                <div class="about-detail-text">
+                                    <div class="about-detail-label">Name</div>
+                                    <div class="about-detail-value">
+                                        Vaishnavi N. Todur
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-detail">
+                                <span class="about-detail-icon"
+                                    ><i
+                                        data-lucide="mail"
+                                        style="width: 18px; height: 18px"
+                                    ></i
+                                ></span>
+                                <div class="about-detail-text">
+                                    <div class="about-detail-label">Email</div>
+                                    <div class="about-detail-value">
+                                        vaishnavintodur@gmail.com
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-detail">
+                                <span class="about-detail-icon"
+                                    ><i
+                                        data-lucide="phone"
+                                        style="width: 18px; height: 18px"
+                                    ></i
+                                ></span>
+                                <div class="about-detail-text">
+                                    <div class="about-detail-label">Phone</div>
+                                    <div class="about-detail-value">
+                                        +91 8217595817
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-detail">
+                                <span class="about-detail-icon"
+                                    ><i
+                                        data-lucide="map-pin"
+                                        style="width: 18px; height: 18px"
+                                    ></i
+                                ></span>
+                                <div class="about-detail-text">
+                                    <div class="about-detail-label">
+                                        Location
+                                    </div>
+                                    <div class="about-detail-value">
+                                        Hubli, Karnataka
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">
+                            <i
+                                data-lucide="download"
+                                style="width: 16px; height: 16px"
+                            ></i>
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section
+            class="section"
+            id="skills"
+            style="background: var(--bg-secondary)"
+        >
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">My Skills</p>
+                    <h2 class="section-title">Technical Expertise</h2>
+                    <p class="section-subtitle">
+                        Technologies and tools I work with to build amazing web
+                        applications
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category reveal">
+                        <div class="skill-category-icon">
+                            <i
+                                data-lucide="code-2"
+                                style="width: 24px; height: 24px"
+                            ></i>
+                        </div>
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-category reveal">
+                        <div class="skill-category-icon">
+                            <i
+                                data-lucide="layers"
+                                style="width: 24px; height: 24px"
+                            ></i>
+                        </div>
+                        <h3>Frameworks & Libraries</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Laravel MVC</span>
+                            <span class="skill-tag">RESTful API</span>
+                            <span class="skill-tag">Authentication</span>
+                            <span class="skill-tag">Authorization</span>
+                            <span class="skill-tag">CRUD Operations</span>
+                        </div>
+                    </div>
+                    <div class="skill-category reveal">
+                        <div class="skill-category-icon">
+                            <i
+                                data-lucide="database"
+                                style="width: 24px; height: 24px"
+                            ></i>
+                        </div>
+                        <h3>Databases</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category reveal">
+                        <div class="skill-category-icon">
+                            <i
+                                data-lucide="wrench"
+                                style="width: 24px; height: 24px"
+                            ></i>
+                        </div>
+                        <h3>Tools & Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git / GitHub</span>
+                            <span class="skill-tag">Postman</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">AI Tools (Devin)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category reveal">
+                        <div class="skill-category-icon">
+                            <i
+                                data-lucide="globe"
+                                style="width: 24px; height: 24px"
+                            ></i>
+                        </div>
+                        <h3>Web Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EXPERIENCE ===== -->
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">Experience</p>
+                    <h2 class="section-title">Work Journey</h2>
+                    <p class="section-subtitle">
+                        Professional experiences that have shaped my development
+                        career
+                    </p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Nov 2025 – Present</p>
+                            <h3>PHP Laravel Backend Intern</h3>
+                            <h4>7 Crore Technologies</h4>
+                            <ul>
+                                <li>
+                                    Developing backend features using PHP and
+                                    Laravel
+                                </li>
+                                <li>
+                                    Implementing CRUD operations and database
+                                    interactions
+                                </li>
+                                <li>
+                                    Contributing to static and responsive
+                                    website development using HTML and CSS
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Sep 2024 – Jan 2025</p>
+                            <h3>Web Developer Intern</h3>
+                            <h4>Rooman Technologies</h4>
+                            <ul>
+                                <li>
+                                    Contributed to the development of an
+                                    e-commerce website for IBM
+                                </li>
+                                <li>
+                                    Built responsive frontend components using
+                                    HTML, CSS, and JavaScript
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS ===== -->
+        <section
+            class="section"
+            id="projects"
+            style="background: var(--bg-secondary)"
+        >
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">Projects</p>
+                    <h2 class="section-title">Featured Work</h2>
+                    <p class="section-subtitle">
+                        Some of the notable projects I've built during my
+                        learning journey
+                    </p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card reveal">
+                        <div class="project-card-header">
+                            <div class="project-card-icon">
+                                <i
+                                    data-lucide="check-square"
+                                    style="width: 24px; height: 24px"
+                                ></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a
+                                    href="https://github.com/vaishnavitodur123/Post_Management_System"
+                                    aria-label="GitHub"
+                                    ><i
+                                        data-lucide="github"
+                                        style="width: 20px; height: 20px"
+                                    ></i
+                                ></a>
+                                <a
+                                    href="https://github.com/vaishnavitodur123/Post_Management_System"
+                                    aria-label="External Link"
+                                    ><i
+                                        data-lucide="external-link"
+                                        style="width: 20px; height: 20px"
+                                    ></i
+                                ></a>
+                            </div>
+                        </div>
+                        <div class="project-card-body">
+                            <h3>Post Management System</h3>
+                            <p class="project-card-type">
+                                Full Stack Web Application
+                            </p>
+                            <p>
+                                Developed a secure post management system with
+                                full CRUD functionality and user authentication
+                                using Laravel Sanctum. Implemented RESTful APIs
+                                for creating, updating, deleting, and retrieving
+                                posts with protected routes.
+                            </p>
+                            <div class="project-card-tech">
+                                <span>Laravel</span>
+                                <span>PHP</span>
+                                <span>MySQL</span>
+                                <span>REST API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card reveal">
+                        <div class="project-card-header">
+                            <div class="project-card-icon">
+                                <i
+                                    data-lucide="book-open"
+                                    style="width: 24px; height: 24px"
+                                ></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a
+                                    href="https://github.com/vaishnavitodur123/The-Blogs"
+                                    aria-label="GitHub"
+                                    ><i
+                                        data-lucide="github"
+                                        style="width: 20px; height: 20px"
+                                    ></i
+                                ></a>
+                                <a
+                                    href="https://github.com/vaishnavitodur123/The-Blogs"
+                                    aria-label="External Link"
+                                    ><i
+                                        data-lucide="external-link"
+                                        style="width: 20px; height: 20px"
+                                    ></i
+                                ></a>
+                            </div>
+                        </div>
+                        <div class="project-card-body">
+                            <h3>Blog Management System</h3>
+                            <p class="project-card-type">
+                                Full-Stack Web Application
+                            </p>
+                            <p>
+                                Developed a blog management system enabling
+                                users to create, edit, and delete blog posts
+                                with responsive UI and structured Laravel MVC
+                                backend.
+                            </p>
+                            <div class="project-card-tech">
+                                <span>Laravel</span>
+                                <span>PHP</span>
+                                <span>MySQL</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal">
+                        <div class="project-card-header">
+                            <div class="project-card-icon">
+                                <i
+                                    data-lucide="sticky-note"
+                                    style="width: 24px; height: 24px"
+                                ></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a
+                                    href="https://github.com/vaishnavitodur123/Notes-Application"
+                                    aria-label="GitHub"
+                                    ><i
+                                        data-lucide="github"
+                                        style="width: 20px; height: 20px"
+                                    ></i
+                                ></a>
+                                <a
+                                    href="https://github.com/vaishnavitodur123/Notes-Application"
+                                    aria-label="External Link"
+                                    ><i
+                                        data-lucide="external-link"
+                                        style="width: 20px; height: 20px"
+                                    ></i
+                                ></a>
+                            </div>
+                        </div>
+                        <div class="project-card-body">
+                            <h3>Notes Application using React</h3>
+                            <p class="project-card-type">
+                                Frontend Web Application
+                            </p>
+                            <p>
+                                Developed a dynamic notes application using
+                                React, enabling users to seamlessly create,
+                                edit, organize, and delete notes with a
+                                responsive, modern UI.
+                            </p>
+                            <div class="project-card-tech">
+                                <span>React</span>
+                                <span>JavaScript</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card reveal">
+                        <div class="project-card-header">
+                            <div class="project-card-icon">
+                                <i
+                                    data-lucide="gamepad-2"
+                                    style="width: 24px; height: 24px"
+                                ></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a href="#" aria-label="External Link"
+                                    ><i
+                                        data-lucide="external-link"
+                                        style="width: 20px; height: 20px"
+                                    ></i
+                                ></a>
+                            </div>
+                        </div>
+                        <div class="project-card-body">
+                            <h3>Mini Project Collections</h3>
+                            <p class="project-card-type">
+                                Frontend Web Application
+                            </p>
+                            <p>
+                                A collection of 4 interactive mini-games built
+                                into a single project. Features engaging
+                                gameplay mechanics, responsive design, and state
+                                management.
+                            </p>
+
+                            <div class="project-mini-games">
+                                <div class="mini-game-item">
+                                    <span>Rock Papper Scissors</span>
+                                    <a
+                                        href="https://github.com/vaishnavitodur123/Game1"
+                                        target="_blank"
+                                        aria-label="GitHub"
+                                        ><i
+                                            data-lucide="github"
+                                            style="width: 16px; height: 16px"
+                                        ></i>
+                                        Code</a
+                                    >
+                                </div>
+                                <div class="mini-game-item">
+                                    <span>Bulb on/off</span>
+                                    <a
+                                        href="https://github.com/vaishnavitodur123/Game2"
+                                        target="_blank"
+                                        aria-label="GitHub"
+                                        ><i
+                                            data-lucide="github"
+                                            style="width: 16px; height: 16px"
+                                        ></i>
+                                        Code</a
+                                    >
+                                </div>
+                                <div class="mini-game-item">
+                                    <span>Count increment and decrement</span>
+                                    <a
+                                        href="https://github.com/vaishnavitodur123/Game3"
+                                        target="_blank"
+                                        aria-label="GitHub"
+                                        ><i
+                                            data-lucide="github"
+                                            style="width: 16px; height: 16px"
+                                        ></i>
+                                        Code</a
+                                    >
+                                </div>
+                                <div class="mini-game-item">
+                                    <span>Calculator</span>
+                                    <a
+                                        href="https://github.com/vaishnavitodur123/Game4"
+                                        target="_blank"
+                                        aria-label="GitHub"
+                                        ><i
+                                            data-lucide="github"
+                                            style="width: 16px; height: 16px"
+                                        ></i>
+                                        Code</a
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="project-card-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EDUCATION ===== -->
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">Education</p>
+                    <h2 class="section-title">Academic Background</h2>
+                    <p class="section-subtitle">
+                        My educational journey in Computer Science
+                    </p>
+                </div>
+                <div class="education-grid">
+                    <div class="education-card reveal">
+                        <div class="education-icon">
+                            <i
+                                data-lucide="graduation-cap"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <h3>Bachelor of Engineering</h3>
+                        <h4>
+                            Computer Science & Engineering – Jain College, Hubli
+                        </h4>
+                        <p class="date">April 2025</p>
+                        <span class="grade">CGPA: 8.67</span>
+                    </div>
+                    <div class="education-card reveal">
+                        <div class="education-icon">
+                            <i
+                                data-lucide="book-marked"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <h3>Diploma in Computer Science</h3>
+                        <h4>KLE's Smt C.I. Munavalli Polytechnic, Hubli</h4>
+                        <p class="date">May 2022</p>
+                        <span class="grade">87.4%</span>
+                    </div>
+                    <div class="education-card reveal">
+                        <div class="education-icon">
+                            <i
+                                data-lucide="school"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <h3>SSLC</h3>
+                        <h4>S.B.I.O.A.E.S School, Hubli</h4>
+                        <p class="date">April 2019</p>
+                        <span class="grade">88.64%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CERTIFICATES ===== -->
+        <section
+            class="section"
+            id="certificates"
+            style="background: var(--bg-secondary)"
+        >
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">Certificates</p>
+                    <h2 class="section-title">Certifications & Training</h2>
+                    <p class="section-subtitle">
+                        Continuous learning through courses and certifications
+                    </p>
+                </div>
+                <div class="certificates-grid">
+                    <div class="certificate-card reveal">
+                        <div class="certificate-icon">
+                            <i
+                                data-lucide="award"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Web Development Bootcamp</h4>
+                            <p>Angela Yu • Aug 2025 – Dec 2025</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card reveal">
+                        <div class="certificate-icon">
+                            <i
+                                data-lucide="award"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Java Development Program</h4>
+                            <p>KodNest • May 2025 – Dec 2025</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card reveal">
+                        <div class="certificate-icon">
+                            <i
+                                data-lucide="award"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Python In-Plant Training</h4>
+                            <p>
+                                Practical Application of Core Programming
+                                Concepts
+                            </p>
+                        </div>
+                    </div>
+                    <div class="certificate-card reveal">
+                        <div class="certificate-icon">
+                            <i
+                                data-lucide="award"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Rooman Technologies (MERN)</h4>
+                            <p>
+                                Ecommerce Application Frontend and Backend
+                                Integration
+                            </p>
+                        </div>
+                    </div>
+                    <div class="certificate-card reveal">
+                        <div class="certificate-icon">
+                            <i
+                                data-lucide="award"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Soft Skills Certification</h4>
+                            <p>Wadhwani Foundation • Nov 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACHIEVEMENTS ===== -->
+        <section class="section" id="achievements">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">Achievements</p>
+                    <h2 class="section-title">Achievements & Activities</h2>
+                    <p class="section-subtitle">
+                        Highlights from my extracurricular and professional
+                        involvement
+                    </p>
+                </div>
+                <div class="achievements-list">
+                    <div class="achievement-item reveal">
+                        <div class="achievement-icon">
+                            <i
+                                data-lucide="trophy"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <div>
+                            <p>
+                                Participated in
+                                <strong>Smart India Hackathon</strong>,
+                                <strong
+                                    >ISTE Dreamtech Project Exhibition</strong
+                                >, and <strong>GDG tech events</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="achievement-item reveal">
+                        <div class="achievement-icon">
+                            <i
+                                data-lucide="heart-handshake"
+                                style="width: 22px; height: 22px"
+                            ></i>
+                        </div>
+                        <div>
+                            <p>
+                                Certified <strong>Civic Club Member</strong> for
+                                Social Service – actively contributing to
+                                community development
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section
+            class="section"
+            id="contact"
+            style="background: var(--bg-secondary)"
+        >
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="section-tag">Contact</p>
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="section-subtitle">
+                        Have a project in mind? Let's connect and build
+                        something amazing
+                    </p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <h3>Let's start a <span>conversation</span></h3>
+                        <p>
+                            I'm always open to discussing new projects, creative
+                            ideas, or opportunities to be part of your vision.
+                            Feel free to reach out!
+                        </p>
+                        <div class="contact-methods">
+                            <a
+                                href="mailto:vaishnavintodur@gmail.com?subject=Let's Work Together&body=Hello Vaishnavi,%0A%0AI saw your portfolio and would like to connect regarding a project.%0A%0AThanks!"
+                                class="contact-method"
+                            >
+                                <div class="contact-method-icon">
+                                    <i
+                                        data-lucide="mail"
+                                        style="width: 20px; height: 20px"
+                                    ></i>
+                                </div>
+                                <div class="contact-method-text">
+                                    <h4>Email</h4>
+                                    <p>vaishnavintodur@gmail.com</p>
+                                </div>
+                            </a>
+                            <a
+                                href="https://wa.me/918217595817"
+                                target="_blank"
+                                class="contact-method"
+                            >
+                                <div class="contact-method-icon">
+                                    <i
+                                        data-lucide="phone"
+                                        style="width: 20px; height: 20px"
+                                    ></i>
+                                </div>
+                                <div class="contact-method-text">
+                                    <h4>WhatsApp</h4>
+                                    <p>+91 8217595817</p>
+                                </div>
+                            </a>
+                            <a href="https://www.google.com/maps?q=Hubli,Karnataka,India" target="_blank" class="contact-method">
+  <div class="contact-method-icon">
+    <i data-lucide="map-pin" style="width: 20px; height: 20px"></i>
   </div>
-
-  <!-- Cursor Glow -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="container">
-      <nav class="nav">
-        <!-- <a href="#hero" class="nav-logo"><span>V</span>aishnavi.</a> -->
-
-        <div class="nav-links" id="navLinks">
-          <a href="#hero" class="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-            <span class="icon-sun"><i data-lucide="sun" style="width:20px;height:20px"></i></span>
-            <span class="icon-moon"><i data-lucide="moon" style="width:20px;height:20px"></i></span>
-          </button>
-          <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <p class="hero-greeting">Hello, I'm</p>
-          <h1 class="hero-name">Vaishnavi <span class="gold">N. Todur</span></h1>
-          <p class="hero-title">
-            <span class="typing-text" id="typingText">PHP Laravel Developer</span>
-          </p>
-          <p class="hero-description">
-            Backend developer with experience in MVC Architecture, RESTful APIs, and SQL database management. Passionate about building clean, efficient, and scalable web applications with additional expertise in building responsive and user-friendly frontend interfaces.
-          </p>
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">
-              <i data-lucide="send" style="width:16px;height:16px"></i> Get In Touch
-            </a>
-            <a href="#projects" class="btn btn-outline">
-              <i data-lucide="folder-open" style="width:16px;height:16px"></i> View Projects
-            </a>
-          </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="hero-stat-number" data-count="2">0</div>
-              <div class="hero-stat-label">Internships</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-number" data-count="2">0</div>
-              <div class="hero-stat-label">Projects</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-number" data-count="4">0</div>
-              <div class="hero-stat-label">Certifications</div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-image-wrapper">
-          <div class="hero-image-container">
-            <!-- Replace this src with your actual photo -->
-            <img src="image/profile_img.jpeg" alt="Vaishnavi N. Todur" class="hero-image" id="profilePhoto">
-            <div class="hero-image-ring"></div>
-            <div class="hero-image-ring-2"></div>
-          </div>
-          <div class="hero-socials">
-            <a href="https://github.com/" target="_blank" aria-label="GitHub">
-              <i data-lucide="github" style="width:20px;height:20px"></i>
-            </a>
-            <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
-              <i data-lucide="linkedin" style="width:20px;height:20px"></i>
-            </a>
-            <a href="mailto:vaishnavintodur@gmail.com" aria-label="Email">
-              <i data-lucide="mail" style="width:20px;height:20px"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">About Me</p>
-        <h2 class="section-title">Know Me Better</h2>
-        <p class="section-subtitle">A passionate developer focused on crafting efficient backend solutions</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-image-box reveal">
-          <div class="about-image-main">
-            <img src="assets/images/profile.png" alt="Vaishnavi N. Todur">
-          </div>
-          <div class="about-image-accent"></div>
-        </div>
-        <div class="about-info reveal">
-          <h3>I'm Vaishnavi, a <span>Full Stack Developer</span></h3>
-          <p>
-            PHP Laravel developer with experience in backend development MVC Architecture, RESTful APIs, and SQL database management. Skilled in building static and responsive websites. Strong problem-solving skills with a focus on clean code and continuous learning.
-          </p>
-          <p>
-            Currently working as a PHP Laravel Backend Intern and handling frontend static websites at 7 Crore Technologies, where I develop backend features, implement CRUD operations, and contribute to responsive website development.
-          </p>
-          <div class="about-details">
-            <div class="about-detail">
-              <span class="about-detail-icon"><i data-lucide="user" style="width:18px;height:18px"></i></span>
-              <div class="about-detail-text">
-                <div class="about-detail-label">Name</div>
-                <div class="about-detail-value">Vaishnavi N. Todur</div>
-              </div>
-            </div>
-            <div class="about-detail">
-              <span class="about-detail-icon"><i data-lucide="mail" style="width:18px;height:18px"></i></span>
-              <div class="about-detail-text">
-                <div class="about-detail-label">Email</div>
-                <div class="about-detail-value">vaishnavintodur@gmail.com</div>
-              </div>
-            </div>
-            <div class="about-detail">
-              <span class="about-detail-icon"><i data-lucide="phone" style="width:18px;height:18px"></i></span>
-              <div class="about-detail-text">
-                <div class="about-detail-label">Phone</div>
-                <div class="about-detail-value">+91 8217595817</div>
-              </div>
-            </div>
-            <div class="about-detail">
-              <span class="about-detail-icon"><i data-lucide="map-pin" style="width:18px;height:18px"></i></span>
-              <div class="about-detail-text">
-                <div class="about-detail-label">Location</div>
-                <div class="about-detail-value">Hubli, Karnataka</div>
-              </div>
-            </div>
-          </div>
-          <a href="#contact" class="btn btn-primary">
-            <i data-lucide="download" style="width:16px;height:16px"></i> Download Resume
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section class="section" id="skills" style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">My Skills</p>
-        <h2 class="section-title">Technical Expertise</h2>
-        <p class="section-subtitle">Technologies and tools I work with to build amazing web applications</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-category reveal">
-          <div class="skill-category-icon">
-            <i data-lucide="code-2" style="width:24px;height:24px"></i>
-          </div>
-          <h3>Programming Languages</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">PHP</span>
-            <span class="skill-tag">JavaScript</span>
-          </div>
-        </div>
-        <div class="skill-category reveal">
-          <div class="skill-category-icon">
-            <i data-lucide="layers" style="width:24px;height:24px"></i>
-          </div>
-          <h3>Frameworks & Libraries</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Laravel MVC</span>
-            <span class="skill-tag">RESTful API</span>
-            <span class="skill-tag">Authentication</span>
-            <span class="skill-tag">Authorization</span>
-            <span class="skill-tag">CRUD Operations</span>
-          </div>
-        </div>
-        <div class="skill-category reveal">
-          <div class="skill-category-icon">
-            <i data-lucide="database" style="width:24px;height:24px"></i>
-          </div>
-          <h3>Databases</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">MySQL</span>
-          </div>
-        </div>
-        <div class="skill-category reveal">
-          <div class="skill-category-icon">
-            <i data-lucide="wrench" style="width:24px;height:24px"></i>
-          </div>
-          <h3>Tools & Platforms</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Postman</span>
-            <span class="skill-tag">VS Code</span>
-            <span class="skill-tag">AI Tools (Devin)</span>
-          </div>
-        </div>
-        <div class="skill-category reveal">
-          <div class="skill-category-icon">
-            <i data-lucide="globe" style="width:24px;height:24px"></i>
-          </div>
-          <h3>Web Technologies</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <span class="skill-tag">Bootstrap</span>
-            <span class="skill-tag">React</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== EXPERIENCE ===== -->
-  <section class="section" id="experience">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">Experience</p>
-        <h2 class="section-title">Work Journey</h2>
-        <p class="section-subtitle">Professional experiences that have shaped my development career</p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <p class="timeline-date">Nov 2025 – Present</p>
-            <h3>PHP Laravel Backend Intern</h3>
-            <h4>7 Crore Technologies</h4>
-            <ul>
-              <li>Developing backend features using PHP and Laravel</li>
-              <li>Implementing CRUD operations and database interactions</li>
-              <li>Contributing to static and responsive website development using HTML and CSS</li>
-            </ul>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <p class="timeline-date">Sep 2024 – Jan 2025</p>
-            <h3>Web Developer Intern</h3>
-            <h4>Rooman Technologies</h4>
-            <ul>
-              <li>Contributed to the development of an e-commerce website for IBM</li>
-              <li>Built responsive frontend components using HTML, CSS, and JavaScript</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section class="section" id="projects" style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">Projects</p>
-        <h2 class="section-title">Featured Work</h2>
-        <p class="section-subtitle">Some of the notable projects I've built during my learning journey</p>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-card-header">
-            <div class="project-card-icon">
-              <i data-lucide="check-square" style="width:24px;height:24px"></i>
-            </div>
-            <div class="project-card-links">
-              <a href="https://github.com/vaishnavitodur123/Post_Management_System" aria-label="GitHub"><i data-lucide="github" style="width:20px;height:20px"></i></a>
-              <a href="https://github.com/vaishnavitodur123/Post_Management_System" aria-label="External Link"><i data-lucide="external-link" style="width:20px;height:20px"></i></a>
-            </div>
-          </div>
-         <div class="project-card-body">
-  <h3>Post Management System</h3>
-  <p class="project-card-type">Full Stack Web Application</p>
-  <p>
-    Developed a secure post management system with full CRUD functionality and user authentication using Laravel Sanctum. 
-    Implemented RESTful APIs for creating, updating, deleting, and retrieving posts with protected routes.
-  </p>
-  <div class="project-card-tech">
-    <span>Laravel</span>
-    <span>PHP</span>
-    <span>MySQL</span>
-    <span>REST API</span>
+  <div class="contact-method-text">
+    <h4>Location</h4>
+    <p>Hubli, Karnataka, India</p>
   </div>
-</div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-header">
-            <div class="project-card-icon">
-              <i data-lucide="book-open" style="width:24px;height:24px"></i>
+</a>
+                        </div>
+                    </div>
+                    <form class="contact-form reveal" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="What's this about?"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Write your message..."
+                                required
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            style="width: 100%; justify-content: center"
+                        >
+                            <i
+                                data-lucide="send"
+                                style="width: 16px; height: 16px"
+                            ></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div class="project-card-links">
-              <a href="https://github.com/vaishnavitodur123/The-Blogs" aria-label="GitHub"><i data-lucide="github" style="width:20px;height:20px"></i></a>
-              <a href="https://github.com/vaishnavitodur123/The-Blogs" aria-label="External Link"><i data-lucide="external-link" style="width:20px;height:20px"></i></a>
-            </div>
-          </div>
-          <div class="project-card-body">
-            <h3>Blog Management System</h3>
-            <p class="project-card-type">Full-Stack Web Application</p>
-            <p>Developed a blog management system enabling users to create, edit, and delete blog posts with responsive UI and structured Laravel MVC backend.</p>
-            <div class="project-card-tech">
-              <span>Laravel</span>
-              <span>PHP</span>
-              <span>MySQL</span>
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>Bootstrap</span>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="project-card reveal">
-          <div class="project-card-header">
-            <div class="project-card-icon">
-              <i data-lucide="sticky-note" style="width:24px;height:24px"></i>
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <a href="#hero" class="footer-logo"
+                        ><span>V</span>aishnavi.</a
+                    >
+                    <p class="footer-text">
+                        © 2026 Vaishnavi N. Todur. All rights reserved.
+                    </p>
+                    <div class="footer-socials">
+                        <a
+                            href="https://github.com/"
+                            target="_blank"
+                            aria-label="GitHub"
+                        >
+                            <i
+                                data-lucide="github"
+                                style="width: 18px; height: 18px"
+                            ></i>
+                        </a>
+                        <a
+                            href="https://linkedin.com/"
+                            target="_blank"
+                            aria-label="LinkedIn"
+                        >
+                            <i
+                                data-lucide="linkedin"
+                                style="width: 18px; height: 18px"
+                            ></i>
+                        </a>
+                        <a
+                            href="mailto:vaishnavintodur@gmail.com"
+                            aria-label="Email"
+                        >
+                            <i
+                                data-lucide="mail"
+                                style="width: 18px; height: 18px"
+                            ></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="project-card-links">
-              <a href="https://github.com/vaishnavitodur123/Notes-Application" aria-label="GitHub"><i data-lucide="github" style="width:20px;height:20px"></i></a>
-              <a href="https://github.com/vaishnavitodur123/Notes-Application" aria-label="External Link"><i data-lucide="external-link" style="width:20px;height:20px"></i></a>
-            </div>
-          </div>
-          <div class="project-card-body">
-            <h3>Notes Application using React</h3>
-            <p class="project-card-type">Frontend Web Application</p>
-            <p>Developed a dynamic notes application using React, enabling users to seamlessly create, edit, organize, and delete notes with a responsive, modern UI.</p>
-            <div class="project-card-tech">
-              <span>React</span>
-              <span>JavaScript</span>
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>Bootstrap</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-header">
-            <div class="project-card-icon">
-              <i data-lucide="gamepad-2" style="width:24px;height:24px"></i>
-            </div>
-            <div class="project-card-links">
-              <a href="#" aria-label="External Link"><i data-lucide="external-link" style="width:20px;height:20px"></i></a>
-            </div>
-          </div>
-          <div class="project-card-body">
-            <h3>Mini Project Collections</h3>
-            <p class="project-card-type">Frontend Web Application</p>
-            <p>A collection of 4 interactive mini-games built into a single project. Features engaging gameplay mechanics, responsive design, and state management.</p>
-            
-            <div class="project-mini-games">
-              <div class="mini-game-item">
-                <span>Rock Papper Scissors</span>
-                <a href="https://github.com/vaishnavitodur123/Game1" target="_blank" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i> Code</a>
-              </div>
-              <div class="mini-game-item">
-                <span>Bulb on/off</span>
-                <a href="https://github.com/vaishnavitodur123/Game2" target="_blank" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i> Code</a>
-              </div>
-              <div class="mini-game-item">
-                <span>Count increment and decrement</span>
-                <a href="https://github.com/vaishnavitodur123/Game3" target="_blank" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i> Code</a>
-              </div>
-              <div class="mini-game-item">
-                <span>Calculator</span>
-                <a href="https://github.com/vaishnavitodur123/Game4" target="_blank" aria-label="GitHub"><i data-lucide="github" style="width:16px;height:16px"></i> Code</a>
-              </div>
-            </div>
+        </footer>
 
-            <div class="project-card-tech">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- Scroll to Top -->
+        <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+            <i data-lucide="chevron-up" style="width: 22px; height: 22px"></i>
+        </button>
 
-  <!-- ===== EDUCATION ===== -->
-  <section class="section" id="education">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">Education</p>
-        <h2 class="section-title">Academic Background</h2>
-        <p class="section-subtitle">My educational journey in Computer Science</p>
-      </div>
-      <div class="education-grid">
-        <div class="education-card reveal">
-          <div class="education-icon">
-            <i data-lucide="graduation-cap" style="width:22px;height:22px"></i>
-          </div>
-          <h3>Bachelor of Engineering</h3>
-          <h4>Computer Science & Engineering – Jain College, Hubli</h4>
-          <p class="date">April 2025</p>
-          <span class="grade">CGPA: 8.67</span>
-        </div>
-        <div class="education-card reveal">
-          <div class="education-icon">
-            <i data-lucide="book-marked" style="width:22px;height:22px"></i>
-          </div>
-          <h3>Diploma in Computer Science</h3>
-          <h4>KLE's Smt C.I. Munavalli Polytechnic, Hubli</h4>
-          <p class="date">May 2022</p>
-          <span class="grade">87.4%</span>
-        </div>
-        <div class="education-card reveal">
-          <div class="education-icon">
-            <i data-lucide="school" style="width:22px;height:22px"></i>
-          </div>
-          <h3>SSLC</h3>
-          <h4>S.B.I.O.A.E.S School, Hubli</h4>
-          <p class="date">April 2019</p>
-          <span class="grade">88.64%</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CERTIFICATES ===== -->
-  <section class="section" id="certificates" style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">Certificates</p>
-        <h2 class="section-title">Certifications & Training</h2>
-        <p class="section-subtitle">Continuous learning through courses and certifications</p>
-      </div>
-      <div class="certificates-grid">
-        <div class="certificate-card reveal">
-          <div class="certificate-icon">
-            <i data-lucide="award" style="width:22px;height:22px"></i>
-          </div>
-          <div class="certificate-info">
-            <h4>Web Development Bootcamp</h4>
-            <p>Angela Yu • Aug 2025 – Dec 2025</p>
-          </div>
-        </div>
-        <div class="certificate-card reveal">
-          <div class="certificate-icon">
-            <i data-lucide="award" style="width:22px;height:22px"></i>
-          </div>
-          <div class="certificate-info">
-            <h4>Java Development Program</h4>
-            <p>KodNest • May 2025 – Dec 2025</p>
-          </div>
-        </div>
-        <div class="certificate-card reveal">
-          <div class="certificate-icon">
-            <i data-lucide="award" style="width:22px;height:22px"></i>
-          </div>
-          <div class="certificate-info">
-            <h4>Python In-Plant Training</h4>
-            <p>Practical Application of Core Programming Concepts</p>
-          </div>
-        </div>
-         <div class="certificate-card reveal">
-          <div class="certificate-icon">
-            <i data-lucide="award" style="width:22px;height:22px"></i>
-          </div>
-          <div class="certificate-info">
-            <h4>Rooman Technologies (MERN)</h4>
-            <p>Ecommerce Application Frontend and Backend Integration</p>
-          </div>
-        </div>
-        <div class="certificate-card reveal">
-          <div class="certificate-icon">
-            <i data-lucide="award" style="width:22px;height:22px"></i>
-          </div>
-          <div class="certificate-info">
-            <h4>Soft Skills Certification</h4>
-            <p>Wadhwani Foundation • Nov 2024</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ACHIEVEMENTS ===== -->
-  <section class="section" id="achievements">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">Achievements</p>
-        <h2 class="section-title">Achievements & Activities</h2>
-        <p class="section-subtitle">Highlights from my extracurricular and professional involvement</p>
-      </div>
-      <div class="achievements-list">
-        <div class="achievement-item reveal">
-          <div class="achievement-icon">
-            <i data-lucide="trophy" style="width:22px;height:22px"></i>
-          </div>
-          <div>
-            <p>Participated in <strong>Smart India Hackathon</strong>, <strong>ISTE Dreamtech Project Exhibition</strong>, and <strong>GDG tech events</strong></p>
-          </div>
-        </div>
-        <div class="achievement-item reveal">
-          <div class="achievement-icon">
-            <i data-lucide="heart-handshake" style="width:22px;height:22px"></i>
-          </div>
-          <div>
-            <p>Certified <strong>Civic Club Member</strong> for Social Service – actively contributing to community development</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section class="section" id="contact" style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-tag">Contact</p>
-        <h2 class="section-title">Let's Work Together</h2>
-        <p class="section-subtitle">Have a project in mind? Let's connect and build something amazing</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <h3>Let's start a <span>conversation</span></h3>
-          <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
-          <div class="contact-methods">
-            <a href="mailto:vaishnavintodur@gmail.com" class="contact-method">
-              <div class="contact-method-icon">
-                <i data-lucide="mail" style="width:20px;height:20px"></i>
-              </div>
-              <div class="contact-method-text">
-                <h4>Email</h4>
-                <p>vaishnavintodur@gmail.com</p>
-              </div>
-            </a>
-            <a href="tel:+918217595817" class="contact-method">
-              <div class="contact-method-icon">
-                <i data-lucide="phone" style="width:20px;height:20px"></i>
-              </div>
-              <div class="contact-method-text">
-                <h4>Phone</h4>
-                <p>+91 8217595817</p>
-              </div>
-            </a>
-            <div class="contact-method">
-              <div class="contact-method-icon">
-                <i data-lucide="map-pin" style="width:20px;height:20px"></i>
-              </div>
-              <div class="contact-method-text">
-                <h4>Location</h4>
-                <p>Hubli, Karnataka, India</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <form class="contact-form reveal" id="contactForm">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="What's this about?">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            <i data-lucide="send" style="width:16px;height:16px"></i> Send Message
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <a href="#hero" class="footer-logo"><span>V</span>aishnavi.</a>
-        <p class="footer-text">© 2026 Vaishnavi N. Todur. All rights reserved.</p>
-        <div class="footer-socials">
-          <a href="https://github.com/" target="_blank" aria-label="GitHub">
-            <i data-lucide="github" style="width:18px;height:18px"></i>
-          </a>
-          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
-            <i data-lucide="linkedin" style="width:18px;height:18px"></i>
-          </a>
-          <a href="mailto:vaishnavintodur@gmail.com" aria-label="Email">
-            <i data-lucide="mail" style="width:18px;height:18px"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll to Top -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-    <i data-lucide="chevron-up" style="width:22px;height:22px"></i>
-  </button>
-
-  <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
