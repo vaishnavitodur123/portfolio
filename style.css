@@ -2525,3 +2525,37 @@ ul {
         page-break-inside: avoid;
     }
 }
+
+/* ===== CUSTOM PORTFOLIO PROFILE IMAGE CUSTOMIZATION ===== */
+/* Override circular frame to a rounded rectangle, reduce size, and make full image visible */
+
+.hero-image-container {
+    width: 260px; /* Reduced from 320px for a slightly smaller profile area */
+    max-width: 100%; /* Responsive safeguard */
+    height: auto; /* Adjust height dynamically to prevent vertical squishing */
+    aspect-ratio: auto; /* Reset square aspect ratio to fit full image dimensions */
+}
+
+.hero-image {
+    width: 100%;
+    height: auto; /* Allow height to adjust proportionally */
+    border-radius: var(--border-radius); /* Remove the circle (50%) and use theme-matching rounded corners (16px) */
+    object-fit: contain; /* Ensure the entire image is visible without cropping */
+    border: none; /* Remove the golden border as requested */
+    box-shadow: none; /* Remove the shadow as requested */
+    animation: none; /* Disable the glowing shadow animation */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .hero-image-container {
+        width: 180px; /* Reduced from 200px on tablet */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-image-container {
+        width: 140px; /* Reduced from 160px on mobile */
+    }
+}
+
