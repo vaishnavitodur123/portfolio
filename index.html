@@ -38,19 +38,35 @@
         <!-- Lucide Icons -->
         <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
+        <!-- Particles.js for starfield -->
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <!-- Loading Screen -->
         <div class="loader" id="loader">
             <div class="loader-inner">
+                <div class="loader-stars">
+                    <span></span><span></span><span></span><span></span
+                    ><span></span>
+                </div>
                 <div class="loader-name">Portfolio</div>
                 <div class="loader-bar"></div>
+                <div class="loader-tagline">Crafting digital experiences</div>
             </div>
         </div>
 
-        <!-- Cursor Glow -->
-        <div class="cursor-glow" id="cursorGlow"></div>
+        <!-- Starfield Background -->
+        <canvas id="starfield" class="starfield-canvas"></canvas>
+
+        <!-- Floating Particles -->
+        <div class="floating-particles" id="floatingParticles"></div>
+
+        <!-- Shooting Stars -->
+        <div class="shooting-stars">
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+        </div>
 
         <!-- ===== HEADER ===== -->
         <header class="header" id="header">
@@ -63,26 +79,6 @@
                         <a href="#projects">Projects</a>
                         <a href="#contact">Contact</a>
                     </div>
-
-                    <div class="nav-actions">
-                        <button
-                            class="theme-toggle"
-                            id="themeToggle"
-                            aria-label="Toggle Theme"
-                        >
-                            <span class="icon-sun"
-                                ><i
-                                    data-lucide="sun"
-                                    style="width: 20px; height: 20px"
-                                ></i
-                            ></span>
-                            <span class="icon-moon"
-                                ><i
-                                    data-lucide="moon"
-                                    style="width: 20px; height: 20px"
-                                ></i
-                            ></span>
-                        </button>
                         <button
                             class="nav-toggle"
                             id="navToggle"
@@ -92,8 +88,7 @@
                             <span></span>
                             <span></span>
                         </button>
-                    </div>
-                </nav>
+                    </nav>
             </div>
         </header>
 
@@ -101,24 +96,26 @@
         <section class="hero" id="hero">
             <div class="hero-bg-grid"></div>
             <div class="hero-glow"></div>
+            <div class="hero-glow-2"></div>
+            <!-- Nebula orbs -->
+            <div class="nebula-orb nebula-orb-1"></div>
+            <div class="nebula-orb nebula-orb-2"></div>
+            <div class="nebula-orb nebula-orb-3"></div>
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
                         <p class="hero-greeting">Hello, I'm</p>
-                        <h1 class="hero-name">
-                            Vaishnavi <span class="gold">N. Todur</span>
-                        </h1>
+                        <h1>Vaishnavi N. Todur</h1>
                         <p class="hero-title">
                             <span class="typing-text" id="typingText"
-                                >PHP Laravel Developer</span
+                                >Full-Stack Developer</span
                             >
                         </p>
                         <p class="hero-description">
-                            PHP Laravel developer with experience in MVC
-                            Architecture, RESTful APIs, and SQL database
-                            management. Currently working as a Backend Intern at
-                            7 Crore Technologies, building clean, efficient, and
-                            scalable web applications.
+                            Full-Stack Developer with hands-on experience in
+                            building Static Websites Using HTML, CSS and
+                            JavaScript along with applications using Laravel,
+                            MySQL, RESTful APIs and CRUD operations.
                         </p>
 
                         <!-- About Details (merged) -->
@@ -162,7 +159,6 @@
                                 View Projects
                             </a>
                         </div>
-                        
                     </div>
                     <div class="hero-image-wrapper">
                         <div class="hero-image-container">
@@ -172,8 +168,6 @@
                                 class="hero-image"
                                 id="profilePhoto"
                             />
-                            <div class="hero-image-ring"></div>
-                            <div class="hero-image-ring-2"></div>
                         </div>
                         <div class="hero-socials">
                             <a
@@ -188,7 +182,7 @@
                                 />
                             </a>
                             <a
-                                href="https://linkedin.com/in/vaishnavi-todur"
+                                href="https://www.linkedin.com/in/vaishnavi-n-todur-a58706279/"
                                 target="_blank"
                                 aria-label="LinkedIn"
                             >
@@ -214,89 +208,142 @@
             </div>
         </section>
 
-        <!-- ===== SKILLS (Compact) ===== -->
+        <!-- ===== SKILLS (Icon Grid) ===== -->
         <section
-            class="section"
+            class="section section-slim"
             id="skills"
             style="background: var(--bg-secondary)"
         >
             <div class="container">
-                <div class="section-header reveal">
-                    <p class="section-tag">My Skills</p>
+                <div class="section-header section-header-sm reveal">
+                    <div class="section-constellation">
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                    </div>
+                    <p class="section-tag">
+                        <i
+                            data-lucide="sparkles"
+                            style="width: 14px; height: 14px"
+                        ></i>
+                        My Skills
+                    </p>
                     <h2 class="section-title">Technical Expertise</h2>
                 </div>
-                <div class="skills-compact reveal">
-                    <div class="skill-row">
-                        <span class="skill-row-label">
-                            <i
-                                data-lucide="code-2"
-                                style="width: 18px; height: 18px"
-                            ></i>
-                            Languages
-                        </span>
-                        <div class="skill-pills">
-                            <span class="skill-pill">Java</span>
-                            <span class="skill-pill">PHP</span>
-                            <span class="skill-pill">JavaScript</span>
-                        </div>
+                <div class="skills-grid reveal">
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+                            alt="Java"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">Java</span>
                     </div>
-                    <div class="skill-row">
-                        <span class="skill-row-label">
-                            <i
-                                data-lucide="layers"
-                                style="width: 18px; height: 18px"
-                            ></i>
-                            Frameworks
-                        </span>
-                        <div class="skill-pills">
-                            <span class="skill-pill">Laravel MVC</span>
-                            <span class="skill-pill">RESTful API</span>
-                            <span class="skill-pill">Authentication</span>
-                            <span class="skill-pill">CRUD Operations</span>
-                        </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+                            alt="PHP"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">PHP</span>
                     </div>
-                    <div class="skill-row">
-                        <span class="skill-row-label">
-                            <i
-                                data-lucide="database"
-                                style="width: 18px; height: 18px"
-                            ></i>
-                            Databases
-                        </span>
-                        <div class="skill-pills">
-                            <span class="skill-pill">MongoDB</span>
-                            <span class="skill-pill">MySQL</span>
-                        </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                            alt="JavaScript"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">JavaScript</span>
                     </div>
-                    <div class="skill-row">
-                        <span class="skill-row-label">
-                            <i
-                                data-lucide="globe"
-                                style="width: 18px; height: 18px"
-                            ></i>
-                            Web Tech
-                        </span>
-                        <div class="skill-pills">
-                            <span class="skill-pill">HTML</span>
-                            <span class="skill-pill">CSS</span>
-                            <span class="skill-pill">Bootstrap</span>
-                            <span class="skill-pill">React</span>
-                        </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
+                            alt="Laravel"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">Laravel</span>
                     </div>
-                    <div class="skill-row">
-                        <span class="skill-row-label">
-                            <i
-                                data-lucide="wrench"
-                                style="width: 18px; height: 18px"
-                            ></i>
-                            Tools
-                        </span>
-                        <div class="skill-pills">
-                            <span class="skill-pill">Git / GitHub</span>
-                            <span class="skill-pill">Postman</span>
-                            <span class="skill-pill">VS Code</span>
-                            <span class="skill-pill">AI Tools</span>
-                        </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                            alt="MongoDB"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">MongoDB</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+                            alt="MySQL"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">MySQL</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                            alt="HTML5"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">HTML</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                            alt="CSS3"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">CSS</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
+                            alt="Bootstrap"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">Bootstrap</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                            alt="React"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">React</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                            alt="Git"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">Git</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                            alt="GitHub"
+                            class="skill-card-icon github-icon"
+                        />
+                        <span class="skill-card-name">GitHub</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
+                            alt="Postman"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">Postman</span>
+                    </div>
+                    <div class="skill-card">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+                            alt="VS Code"
+                            class="skill-card-icon"
+                        />
+                        <span class="skill-card-name">VS Code</span>
                     </div>
                 </div>
             </div>
@@ -306,7 +353,20 @@
         <section class="section" id="journey">
             <div class="container">
                 <div class="section-header reveal">
-                    <p class="section-tag">My Journey</p>
+                    <div class="section-constellation">
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                    </div>
+                    <p class="section-tag">
+                        <i
+                            data-lucide="sparkles"
+                            style="width: 14px; height: 14px"
+                        ></i>
+                        My Journey
+                    </p>
                     <h2 class="section-title">Experience & Education</h2>
                 </div>
 
@@ -564,7 +624,20 @@
         >
             <div class="container">
                 <div class="section-header reveal">
-                    <p class="section-tag">Projects</p>
+                    <div class="section-constellation">
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                    </div>
+                    <p class="section-tag">
+                        <i
+                            data-lucide="sparkles"
+                            style="width: 14px; height: 14px"
+                        ></i>
+                        Projects
+                    </p>
                     <h2 class="section-title">Featured Work</h2>
                 </div>
 
@@ -944,16 +1017,25 @@
         <section class="section" id="contact">
             <div class="container">
                 <div class="section-header reveal">
-                    <p class="section-tag">Contact</p>
+                    <div class="section-constellation">
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                        <span class="constellation-line"></span>
+                        <span class="constellation-dot"></span>
+                    </div>
+                    <p class="section-tag">
+                        <i
+                            data-lucide="sparkles"
+                            style="width: 14px; height: 14px"
+                        ></i>
+                        Contact
+                    </p>
                     <h2 class="section-title">Let's Work Together</h2>
                 </div>
                 <div class="contact-compact reveal">
                     <div class="contact-left">
-                        <p class="contact-tagline">
-                            I'm always open to discussing new projects, creative
-                            ideas, or opportunities. Feel free to reach out!
-                        </p>
-                        <div class="contact-methods">
+                        <!-- <div class="contact-methods">
                             <a
                                 href="mailto:vaishnavintodur@gmail.com?subject=Let's Work Together&body=Hello Vaishnavi,%0A%0AI saw your portfolio and would like to connect regarding a project.%0A%0AThanks!"
                                 class="contact-method"
@@ -985,9 +1067,9 @@
                                     <p>Hubli, Karnataka, India</p>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
                         <!-- Social Links -->
-                        <div class="contact-socials">
+                        <!-- <div class="contact-socials">
                             <a
                                 href="https://github.com/vaishnavitodur123"
                                 target="_blank"
@@ -1020,7 +1102,7 @@
                                     class="social-icon-img"
                                 />
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
@@ -1072,12 +1154,12 @@
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
-                    <p class="footer-text">
-                        I’m a full-stack PHP developer who loves building
-                        practical and impactful web applications. Always excited
-                        to learn, grow, and collaborate—have an idea? Let’s
-                        connect.
-                    </p>
+                    <div class="footer-stars">
+                        <span class="footer-star">✦</span>
+                        <span class="footer-star">✧</span>
+                        <span class="footer-star">✦</span>
+                    </div>
+                    <p class="footer-text">Love To Connect and Grow.</p>
                 </div>
             </div>
         </footer>

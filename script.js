@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   initLoader();
+  initStarfield();
+  initFloatingParticles();
   initThemeToggle();
   initNavigation();
   initTypingEffect();
@@ -19,7 +21,107 @@ function initLoader() {
   const loader = document.getElementById('loader');
   setTimeout(() => {
     loader.classList.add('hidden');
-  }, 1800);
+  }, 2200);
+}
+
+// ===== STARFIELD CANVAS =====
+function initStarfield() {
+  const canvas = document.getElementById('starfield');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let stars = [];
+  const STAR_COUNT = 200;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createStars() {
+    stars = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2.2 + 0.3,
+        opacity: Math.random() * 0.7 + 0.3,
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinklePhase: Math.random() * Math.PI * 2,
+        // Some stars are gold-tinted
+        isGold: Math.random() < 0.15
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const time = Date.now() * 0.001;
+
+    stars.forEach(star => {
+      const twinkle = Math.sin(time * star.twinkleSpeed * 60 + star.twinklePhase);
+      const opacity = star.opacity * (0.5 + 0.5 * twinkle);
+
+      if (star.isGold) {
+        ctx.fillStyle = `rgba(212, 165, 55, ${opacity})`;
+        // Add a tiny glow for gold stars
+        ctx.shadowBlur = star.size * 3;
+        ctx.shadowColor = 'rgba(212, 165, 55, 0.3)';
+      } else {
+        ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.8})`;
+        ctx.shadowBlur = 0;
+        ctx.shadowColor = 'transparent';
+      }
+
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  createStars();
+  draw();
+
+  window.addEventListener('resize', () => {
+    resize();
+    createStars();
+  });
+}
+
+// ===== FLOATING PARTICLES =====
+function initFloatingParticles() {
+  const container = document.getElementById('floatingParticles');
+  if (!container) return;
+
+  const PARTICLE_COUNT = 25;
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+
+    const size = Math.random() * 3 + 1;
+    const duration = Math.random() * 15 + 10;
+    const delay = Math.random() * 20;
+    const left = Math.random() * 100;
+
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.left = left + '%';
+    particle.style.animationDuration = duration + 's';
+    particle.style.animationDelay = delay + 's';
+
+    // Some particles have a subtle glow
+    if (Math.random() < 0.3) {
+      particle.style.boxShadow = `0 0 ${size * 2}px rgba(212, 165, 55, 0.4)`;
+    }
+
+    container.appendChild(particle);
+  }
 }
 
 // ===== THEME TOGGLE =====
@@ -28,6 +130,8 @@ function initThemeToggle() {
   const html = document.documentElement;
   const storedTheme = localStorage.getItem('portfolio-theme') || 'dark';
   html.setAttribute('data-theme', storedTheme);
+
+  if (!toggle) return;
 
   toggle.addEventListener('click', () => {
     const current = html.getAttribute('data-theme');
@@ -178,6 +282,7 @@ function initCountUp() {
 // ===== CURSOR GLOW =====
 function initCursorGlow() {
   const glow = document.getElementById('cursorGlow');
+  if (!glow) return;
 
   if (window.innerWidth > 768) {
     document.addEventListener('mousemove', (e) => {
