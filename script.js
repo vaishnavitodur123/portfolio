@@ -192,10 +192,10 @@ function initNavigation() {
 function initTypingEffect() {
   const element = document.getElementById('typingText');
   const titles = [
-    'PHP Laravel Developer',
-    'Backend Developer',
-    'Web Developer',
-    'Problem Solver'
+     'Laravel & PHP Developer',
+  'Java Backend Programmer',
+  'Database & API Integrator',
+  'Web Developer'
   ];
 
   let titleIndex = 0;

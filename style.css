@@ -770,7 +770,7 @@ ul {
     padding-top: var(--header-height);
 }
 
-.hero-bg-grid {
+.hero-bg-grid { display: none;
     position: absolute;
     inset: 0;
     background-image:
@@ -786,7 +786,7 @@ ul {
     );
 }
 
-.hero-glow {
+/* .hero-glow {
     position: absolute;
     width: 600px;
     height: 600px;
@@ -800,7 +800,7 @@ ul {
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-}
+} */
 
 .hero-content {
     display: grid;
@@ -2521,8 +2521,6 @@ ul {
         color: black;
     }
     .section {
-        padding: 24px 0;
-        page-break-inside: avoid;
     }
 }
 
@@ -2534,6 +2532,7 @@ ul {
     max-width: 100%; /* Responsive safeguard */
     height: auto; /* Adjust height dynamically to prevent vertical squishing */
     aspect-ratio: auto; /* Reset square aspect ratio to fit full image dimensions */
+    position: relative; /* Ensure it is explicitly positioned for absolute children */
 }
 
 .hero-image {
@@ -2559,3 +2558,192 @@ ul {
     }
 }
 
+/* ===== FLOATING BADGES NEAR PROFILE IMAGE ===== */
+.floating-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+    transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    animation: floatBadge 6s ease-in-out infinite;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.floating-badge:hover {
+    transform: translateY(-5px) scale(1.05);
+    border-color: var(--gold-400);
+    box-shadow: var(--shadow-gold);
+}
+
+.badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(212, 165, 55, 0.1);
+    border-radius: 50%;
+    color: var(--gold-400);
+    flex-shrink: 0;
+}
+
+.badge-icon i,
+.badge-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.badge-content {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.badge-number {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.badge-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Individual Positions & Floating Animation Delays */
+.badge-internships {
+    top: 10%;
+    left: -125px; /* Pushed out from -75px to clear the face/hair */
+    animation-delay: 0s;
+}
+
+.badge-projects {
+    top: 45%;
+    right: -130px; /* Pushed out from -80px to clear the face/hair */
+    animation-delay: 2s;
+}
+
+.badge-certificates {
+    bottom: 12%;
+    left: -105px; /* Pushed out from -60px to clear the arm */
+    animation-delay: 4s;
+}
+
+@keyframes floatBadge {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Responsive styles for floating badges */
+@media screen and (max-width: 992px) {
+    .badge-internships {
+        left: -90px;
+    }
+    .badge-projects {
+        right: -95px;
+    }
+    .badge-certificates {
+        left: -80px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .floating-badge {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .badge-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .badge-icon i,
+    .badge-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .badge-number {
+        font-size: 1rem;
+    }
+    
+    .badge-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .badge-internships {
+        top: 8%;
+        left: -70px;
+    }
+    
+    .badge-projects {
+        top: 45%;
+        right: -75px;
+    }
+    
+    .badge-certificates {
+        bottom: 8%;
+        left: -60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .floating-badge {
+        padding: 6px 10px;
+        gap: 6px;
+    }
+    
+    .badge-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .badge-icon i,
+    .badge-icon svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .badge-number {
+        font-size: 0.9rem;
+    }
+    
+    .badge-label {
+        font-size: 0.58rem;
+    }
+    
+    .badge-internships {
+        top: 5%;
+        left: -50px;
+    }
+    
+    .badge-projects {
+        top: 45%;
+        right: -55px;
+    }
+    
+    .badge-certificates {
+        bottom: 5%;
+        left: -40px;
+    }
+}
